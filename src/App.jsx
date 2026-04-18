@@ -10,12 +10,17 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [currentPage, setCurrentPage] = useState('home')
-  const [searchQuery, setSearchQuery] = useState('cakescacsa')
+  const [searchQuery, setSearchQuery] = useState('Salad')
   const [isLoggedIn, setIsLoggedIn] = useState(true) // Mock logged in user
   const userAvatar = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80'
 
   const handleNavClick = (page) => {
     setCurrentPage(page)
+  }
+
+  const handleSearchFromHeader = (query) => {
+    setSearchQuery(query)
+    handleNavClick('search')
   }
 
   return (
@@ -26,6 +31,8 @@ function App() {
         onSearchClick={() => handleNavClick('search')}
         onHomeClick={() => handleNavClick('home')}
         onProfileClick={() => handleNavClick('profile')}
+        onSearch={handleSearchFromHeader}
+        searchQuery={searchQuery}
         userAvatar={isLoggedIn ? userAvatar : null}
       />
 

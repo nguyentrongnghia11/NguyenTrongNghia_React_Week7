@@ -5,6 +5,7 @@ import LoginModal from './components/LoginModal/LoginModal'
 import Footer from './components/Footer/Footer'
 import SearchPage from './pages/SearchPage'
 import ProfilePage from './pages/ProfilePage'
+import DashboardPage from './pages/DashboardPage'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -25,18 +26,22 @@ function App() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header
-        onLoginClick={() => setIsLoginOpen(true)}
-        onSubscribeClick={() => setIsModalOpen(true)}
-        onSearchClick={() => handleNavClick('search')}
-        onHomeClick={() => handleNavClick('home')}
-        onProfileClick={() => handleNavClick('profile')}
-        onSearch={handleSearchFromHeader}
-        searchQuery={searchQuery}
-        userAvatar={isLoggedIn ? userAvatar : null}
-      />
+      {currentPage !== 'dashboard' && (
+        <Header
+          onLoginClick={() => setIsLoginOpen(true)}
+          onSubscribeClick={() => setIsModalOpen(true)}
+          onSearchClick={() => handleNavClick('search')}
+          onHomeClick={() => handleNavClick('home')}
+          onProfileClick={() => handleNavClick('profile')}
+          onSearch={handleSearchFromHeader}
+          searchQuery={searchQuery}
+          userAvatar={isLoggedIn ? userAvatar : null}
+        />
+      )}
 
-      {currentPage === 'search' ? (
+      {currentPage === 'dashboard' ? (
+        <DashboardPage userAvatar={isLoggedIn ? userAvatar : null} />
+      ) : currentPage === 'search' ? (
         <>
           <SearchPage searchQuery={searchQuery} onSearchQueryChange={setSearchQuery} />
           <Footer />

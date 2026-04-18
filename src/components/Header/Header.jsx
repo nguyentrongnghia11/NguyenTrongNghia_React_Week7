@@ -1,4 +1,4 @@
-function Header({ onLoginClick, onSubscribeClick, onSearchClick, onHomeClick }) {
+function Header({ onLoginClick, onSubscribeClick, onSearchClick, onHomeClick, onProfileClick, userAvatar }) {
   return (
     <header className="sticky top-0 z-20 border-b border-[#ececec] bg-[#DCDCDC]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -43,6 +43,18 @@ function Header({ onLoginClick, onSubscribeClick, onSearchClick, onHomeClick }) 
             >
               Subscribe
             </button>
+            {userAvatar && (
+              <button
+                onClick={onProfileClick}
+                className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#E04071] overflow-hidden transition hover:border-[#d63563]"
+              >
+                <img
+                  src={userAvatar}
+                  alt="User avatar"
+                  className="h-full w-full object-cover"
+                />
+              </button>
+            )}
           </div>
         </div>
       </div>

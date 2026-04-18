@@ -4,12 +4,15 @@ import OnboardingModal from './components/OnboardingModal/OnboardingModal'
 import LoginModal from './components/LoginModal/LoginModal'
 import Footer from './components/Footer/Footer'
 import SearchPage from './pages/SearchPage'
+import ProfilePage from './pages/ProfilePage'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [currentPage, setCurrentPage] = useState('home')
   const [searchQuery, setSearchQuery] = useState('cakescacsa')
+  const [isLoggedIn, setIsLoggedIn] = useState(true) // Mock logged in user
+  const userAvatar = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80'
 
   const handleNavClick = (page) => {
     setCurrentPage(page)
@@ -22,11 +25,18 @@ function App() {
         onSubscribeClick={() => setIsModalOpen(true)}
         onSearchClick={() => handleNavClick('search')}
         onHomeClick={() => handleNavClick('home')}
+        onProfileClick={() => handleNavClick('profile')}
+        userAvatar={isLoggedIn ? userAvatar : null}
       />
 
       {currentPage === 'search' ? (
         <>
           <SearchPage searchQuery={searchQuery} onSearchQueryChange={setSearchQuery} />
+          <Footer />
+        </>
+      ) : currentPage === 'profile' ? (
+        <>
+          <ProfilePage onHomeClick={() => handleNavClick('home')} />
           <Footer />
         </>
       ) : (

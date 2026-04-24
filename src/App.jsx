@@ -53,9 +53,11 @@ function App() {
         </>
       ) : (
         <>
-          <main className="relative flex-1 overflow-hidden bg-[#f1f1f1] px-4 py-8">
-            <div className="mx-auto w-full max-w-6xl rounded-sm bg-white shadow-[0_10px_30px_rgba(0,0,0,0.16)]">
-              <section className="relative h-[620px] overflow-hidden">
+          <main className="relative flex-1 overflow-hidden bg-[#f1f1f1]  py-8">
+
+            {/* Gỡ bỏ max-w-6xl để rộng toàn màn hình */}
+            <div className="w-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.16)]">
+              <section className="relative h-[620px] w-full overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1800&q=80"
                   alt="Cooking background"

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import loginImg from '../../assets/login.png'
 
 function LoginContent({ onClose }) {
   const [email, setEmail] = useState('')
@@ -11,11 +12,10 @@ function LoginContent({ onClose }) {
 
   return (
     <div className="flex min-h-[420px] w-full">
-      {/* Left side - Image */}
       <div className="hidden w-2/5 overflow-hidden rounded-l-lg bg-gradient-to-br from-[#a8d5e2] to-[#7ec8d9] md:flex md:items-center md:justify-center">
         <div className="relative h-full w-full">
           <img
-            src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=600&q=80"
+            src={loginImg}
             alt="Cooking dish"
             className="h-full w-full object-cover"
           />
@@ -29,6 +29,7 @@ function LoginContent({ onClose }) {
 
       {/* Right side - Form */}
       <div className="flex w-full flex-col justify-center px-6 py-8 md:w-3/5 md:px-8">
+        <p className="text-sm text-[#666666]">Login</p>
         <p className="text-sm text-[#666666]">Enter your email to log in.</p>
 
         <form onSubmit={handleContinue} className="mt-5 flex flex-col gap-4">
@@ -55,6 +56,12 @@ function LoginContent({ onClose }) {
           <span className="text-xs text-[#a3a3a3]">or</span>
           <div className="flex-1 border-t border-[#dcdcdc]" />
         </div>
+
+                {/* Footer text */}
+                <p className="mt-5 text-center text-xs text-[#999999]">
+          By continuing, you agree to the updated Terms of Service, and{' '}
+          <span className="text-[#E04071] hover:underline">Privacy Policy</span>
+        </p>
 
         {/* Social login buttons */}
         <div className="flex flex-col gap-3">
@@ -92,11 +99,7 @@ function LoginContent({ onClose }) {
           </button>
         </div>
 
-        {/* Footer text */}
-        <p className="mt-5 text-center text-xs text-[#999999]">
-          By continuing, you agree to the updated Terms of Service, and{' '}
-          <span className="text-[#E04071] hover:underline">Privacy Policy</span>
-        </p>
+
       </div>
     </div>
   )
